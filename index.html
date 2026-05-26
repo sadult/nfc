@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- این تگ نوار مرورگر موبایل را مشکی میکند تا کاملا شبیه اپلیکیشن شود -->
+    <meta name="theme-color" content="#000000">
+    
+    <title>Mersad Shahidi | Bio</title>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* فراخوانی فونت اپل به صورت کاملا آفلاین */
+        @font-face {
+            font-family: 'SF Pro Display';
+            src: url('fonts/SFProDisplay-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'SF Pro Display';
+            src: url('fonts/SFProDisplay-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'SF Pro Display';
+            src: url('fonts/SFProDisplay-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        :root {
+            --ios-bg: #000000;              
+            --ios-card: #1C1C1E;            
+            --ios-element: #2C2C2E;         
+            --ios-text-primary: #FFFFFF;
+            --ios-text-secondary: rgba(235, 235, 245, 0.6); 
+            --ios-separator: rgba(84, 84, 86, 0.65); 
+            
+            --ios-blue: #0A84FF;
+            --ios-green: #32D74B;
+            --ios-orange: #FF9F0A;
+            
+            --radius-card: 10px;            
+            --radius-cc: 14px;
+            
+            --transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), opacity 0.15s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--ios-bg);
+            color: var(--ios-text-primary);
+            /* فونت لوکال اولویت اول است، اگر روی دستگاه اپل باز شود مستقیما فونت سیستم را میخواند */
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 30px 16px 50px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px; 
+        }
+
+        /* Profile Header */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: var(--ios-card);
+        }
+
+        .status-indicator {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--ios-green);
+            border-radius: 50%;
+            border: 4px solid var(--ios-bg);
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 4px;
+        }
+
+        .bio {
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--ios-text-secondary);
+            max-width: 90%;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        /* Primary Socials (Circular) */
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .social-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--ios-element);
+            color: var(--ios-text-primary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-btn:active {
+            transform: scale(0.85);
+            opacity: 0.7;
+        }
+
+        .social-btn.wa { color: #32D74B; }
+        .social-btn.tg { color: #0A84FF; }
+        .social-btn.ig { color: #FF2D55; }
+        .social-btn.li { color: #0A84FF; }
+
+        .block-title {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--ios-text-secondary);
+            margin-bottom: 8px;
+            margin-left: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        /* iOS Settings Grouped List */
+        .ios-list {
+            background-color: var(--ios-card);
+            border-radius: var(--radius-card);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ios-list-item {
+            display: flex;
+            align-items: center;
+            padding: 11px 16px;
+            text-decoration: none;
+            color: var(--ios-text-primary);
+            position: relative;
+            transition: background-color 0.2s;
+        }
+
+        .ios-list-item:active {
+            background-color: #2C2C2E;
+        }
+
+        .ios-list-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 56px; 
+            right: 0;
+            height: 0.5px;
+            background-color: var(--ios-separator);
+        }
+
+        .ios-list-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            margin-right: 14px;
+        }
+
+        .icon-blue { background-color: var(--ios-blue); }
+        .icon-green { background-color: var(--ios-green); }
+
+        .ios-list-text {
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            flex-grow: 1;
+        }
+
+        .ios-chevron {
+            color: rgba(235, 235, 245, 0.3); 
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Languages Chips */
+        .lang-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .lang-chip {
+            background-color: var(--ios-element);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        /* Control Center Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .cc-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--ios-element);
+            border-radius: var(--radius-cc); 
+            padding: 16px 5px;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .cc-btn:active {
+            transform: scale(0.92);
+            opacity: 0.8;
+        }
+
+        .cc-btn i {
+            font-size: 22px;
+            color: var(--ios-text-primary);
+        }
+
+        .cc-btn span {
+            font-size: 12px;
+            color: var(--ios-text-primary);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .cc-btn.active {
+            background-color: var(--ios-blue); 
+        }
+
+        .cc-btn.active i, .cc-btn.active span {
+            color: white;
+        }
+
+        /* Primary Button */
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 16px;
+            background-color: var(--ios-blue);
+            color: white;
+            border-radius: var(--radius-card);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.96);
+            opacity: 0.8;
+        }
+
+        /* Education List */
+        .edu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            position: relative;
+        }
+
+        .edu-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 56px;
+            right: 0;
+            height: 0.5px;
+            background-color: var(--ios-separator);
+        }
+
+        .edu-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .edu-info h4 {
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .edu-info p {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--ios-text-secondary);
+            letter-spacing: -0.01em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Profile Header -->
+        <header class="profile-header">
+            <div class="profile-wrapper">
+                <img src="pfp.jpg" alt="Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/150/1C1C1E/FFFFFF?text=U'">
+                <div class="status-indicator" title="Online"></div>
+            </div>
+            <h1 class="name">Mersad Shahidi</h1>
+            <p class="bio">Software Developer & Systems Engineer. Passionate about building stable and scalable products.</p>
+        </header>
+
+        <!-- Primary Socials -->
+        <div class="social-row">
+            <a href="https://x.com/bitologist" class="social-btn" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://wa.me/989999602099" class="social-btn wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/_bitologist" class="social-btn ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/bitologist" class="social-btn tg" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+
+        <!-- iOS Settings Links -->
+        <div class="ios-list">
+            <a href="https://mercads.ir" class="ios-list-item">
+                <div class="ios-list-icon icon-blue"><i class="fa-solid fa-globe"></i></div>
+                <div class="ios-list-text">mercads.ir</div>
+                <i class="fa-solid fa-chevron-right ios-chevron"></i>
+            </a>
+            <a href="tel:+989999602099" class="ios-list-item">
+                <div class="ios-list-icon icon-green"><i class="fa-solid fa-phone"></i></div>
+                <div class="ios-list-text">+98 99 99 60 20 99</div>
+                <i class="fa-solid fa-chevron-right ios-chevron"></i>
+            </a>
+        </div>
+
+        <!-- Tech Socials -->
+        <div class="social-row">
+            <a href="#" class="social-btn" aria-label="Stack Overflow" style="color: #FF9F0A;"><i class="fab fa-stack-overflow"></i></a>
+            <a href="#" class="social-btn" aria-label="Reddit" style="color: #FF453A;"><i class="fab fa-reddit-alien"></i></a>
+            <a href="#" class="social-btn li" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+
+        <!-- Languages -->
+        <div class="lang-row">
+            <div class="lang-chip">🇬🇧 EN</div>
+            <div class="lang-chip">🇮🇹 IT</div>
+        </div>
+
+        <!-- Core Domains -->
+        <div>
+            <h3 class="block-title">Core Domains</h3>
+            <div class="grid-3">
+                <div class="cc-btn active"><i class="fa-solid fa-code"></i> <span>Web Dev.</span></div>
+                <div class="cc-btn active"><i class="fa-solid fa-server"></i> <span>SysAdmin</span></div>
+                <div class="cc-btn active"><i class="fa-solid fa-brain"></i> <span>AI / ML</span></div>
+            </div>
+        </div>
+
+        <!-- Tools & Tech -->
+        <div>
+            <h3 class="block-title">Tools & Tech</h3>
+            <div class="grid-3">
+                <div class="cc-btn"><i class="fa-brands fa-python"></i> <span>Python</span></div>
+                <div class="cc-btn"><i class="fa-brands fa-docker"></i> <span>Docker</span></div>
+                <div class="cc-btn"><i class="fa-brands fa-linux"></i> <span>Linux</span></div>
+                
+                <div class="cc-btn"><i class="fa-brands fa-php"></i> <span>PHP</span></div>
+                <div class="cc-btn"><i class="fa-brands fa-js"></i> <span>JavaScript</span></div>
+                <div class="cc-btn"><i class="fa-brands fa-git-alt"></i> <span>Git</span></div>
+                
+                <div class="cc-btn"><i class="fa-solid fa-terminal"></i> <span>Bash</span></div>
+                <div class="cc-btn"><i class="fa-solid fa-database"></i> <span>SQL</span></div>
+                <div class="cc-btn"><i class="fa-brands fa-react"></i> <span>React</span></div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div>
+            <h3 class="block-title">Education</h3>
+            <div class="ios-list">
+                <div class="edu-item">
+                    <div class="ios-list-icon icon-blue" style="margin-right: 14px;"><i class="fa-solid fa-computer"></i></div>
+                    <div class="edu-info">
+                        <h4>Computer Engineering</h4>
+                        <p>Sharif University of Technology</p>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <div class="ios-list-icon icon-green" style="margin-right: 14px;"><i class="fa-solid fa-leaf"></i></div>
+                    <div class="edu-info">
+                        <h4>Animal Science</h4>
+                        <p>Razi University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download CTA -->
+        <!-- پروتکل https به لینک اضافه شد تا به عنوان آدرس سایت خارجی شناخته شود -->
+        <a href="https://mercads.ir/resume" class="btn-primary">
+            <i class="fa-solid fa-arrow-down-to-line"></i>
+            Full Resume
+        </a>
+
+    </div>
+
+</body>
+</html>
