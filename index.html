@@ -4,35 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- این تگ نوار مرورگر موبایل را مشکی میکند تا کاملا شبیه اپلیکیشن شود -->
+    <!-- نوار مرورگر موبایل را مشکی میکند تا کاملا شبیه اپلیکیشن شود -->
     <meta name="theme-color" content="#000000">
     
     <title>Mersad Shahidi | Bio</title>
     
+    <!-- لود آنلاین فونت اپل -->
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* فراخوانی فونت اپل به صورت کاملا آفلاین */
-        @font-face {
-            font-family: 'SF Pro Display';
-            src: url('fonts/SFProDisplay-Regular.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'SF Pro Display';
-            src: url('fonts/SFProDisplay-Medium.woff2') format('woff2');
-            font-weight: 500;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'SF Pro Display';
-            src: url('fonts/SFProDisplay-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-display: swap;
-        }
-
         :root {
             --ios-bg: #000000;              
             --ios-card: #1C1C1E;            
@@ -61,7 +43,6 @@
         body {
             background-color: var(--ios-bg);
             color: var(--ios-text-primary);
-            /* فونت لوکال اولویت اول است، اگر روی دستگاه اپل باز شود مستقیما فونت سیستم را میخواند */
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             display: flex;
             justify-content: center;
@@ -456,7 +437,6 @@
         </div>
 
         <!-- Download CTA -->
-        <!-- پروتکل https به لینک اضافه شد تا به عنوان آدرس سایت خارجی شناخته شود -->
         <a href="https://mercads.ir/resume" class="btn-primary">
             <i class="fa-solid fa-arrow-down-to-line"></i>
             Full Resume
